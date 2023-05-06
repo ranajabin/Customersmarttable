@@ -1,0 +1,42 @@
+<mvc:View controllerName="smarttablecustomer.northwindcustomerfilterproject.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Page id="page" title="{i18n>title}" titleAlignment = "Center">
+        <content >
+
+ 					<!-- <VBox fitContainer="true"> -->
+			<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="Customers" 
+            basicSearchFieldName = "CustomerID" enableBasicSearch = "true">
+
+				<smartFilterBar:controlConfiguration>
+					<smartFilterBar:ControlConfiguration id = "idCustomer" visibleInAdvancedArea="true" label = "CustomerID" key = "CustomerID">
+					 <smartFilterBar:defaultFilterValues>
+                        <smartFilterBar:SelectOption low = "ALFKI" />
+                     </smartFilterBar:defaultFilterValues>
+			    </smartFilterBar:ControlConfiguration>
+
+                    <smartFilterBar:ControlConfiguration id = "idCompany" visibleInAdvancedArea="true" label = " CompanyName " key = "CompanyName"/>
+                    <smartFilterBar:ControlConfiguration id = "idCity" visibleInAdvancedArea="true" label = "City " key = "City"/>
+					
+				</smartFilterBar:controlConfiguration>				
+			</smartFilterBar:SmartFilterBar>
+
+			<smartTable:SmartTable id="idSmartTable" smartFilterId="idSmartFilterBar" entitySet="Customers" tableType="ResponsiveTable" 
+			initiallyVisibleFields="CustomerID,CompanyName,City" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" app:useSmartToggle="true">
+			
+				<!-- <smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData> -->
+				<Table id = "idResponsiveTable" selectionChange = "handleSelectionChange" mode = "SingleSelectMaster" />
+			</smartTable:SmartTable>
+		<!-- </VBox> -->
+        </content>
+    </Page>
+</mvc:View>
+
+
+
